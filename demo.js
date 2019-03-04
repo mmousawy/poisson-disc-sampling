@@ -46,7 +46,7 @@ class PoissonDemoCanvas
       samples: options.samples || 100
     };
 
-    this.fastPoisson = new fastPoisson(options.poissonOptions);
+    this.poisson = new Poisson(options.poissonOptions);
 
     utils.setProperties(this.canvas, {
       width: options.poissonOptions.dimensions.width,
@@ -60,15 +60,15 @@ class PoissonDemoCanvas
     const gridData = [];
 
     // Vertical lines
-    for (let rowIndex = 1; rowIndex < this.fastPoisson.rows; rowIndex++) {
-      gridData.push(`M 0,${this.fastPoisson.cellSize * rowIndex}`);
-      gridData.push(`L ${this.fastPoisson.options.dimensions.width},${this.fastPoisson.cellSize * rowIndex}`);
+    for (let rowIndex = 1; rowIndex < this.poisson.rows; rowIndex++) {
+      gridData.push(`M 0,${this.poisson.cellSize * rowIndex}`);
+      gridData.push(`L ${this.poisson.options.dimensions.width},${this.poisson.cellSize * rowIndex}`);
     }
 
     // Horizontal lines
-    for (let columnIndex = 1; columnIndex < this.fastPoisson.columns; columnIndex++) {
-      gridData.push(`M ${this.fastPoisson.cellSize * columnIndex},0`);
-      gridData.push(`L ${this.fastPoisson.cellSize * columnIndex},${this.fastPoisson.options.dimensions.height}`);
+    for (let columnIndex = 1; columnIndex < this.poisson.columns; columnIndex++) {
+      gridData.push(`M ${this.poisson.cellSize * columnIndex},0`);
+      gridData.push(`L ${this.poisson.cellSize * columnIndex},${this.poisson.options.dimensions.height}`);
     }
 
     utils.setProperties(gridPath, {
@@ -92,7 +92,7 @@ class PoissonDemoCanvas
 
   addPoint()
   {
-    const point = new Point(this.fastPoisson, this.totalTime);
+    const point = new Point(this.poisson, this.totalTime);
     this.totalTime += point.time;
 
     return point.success;

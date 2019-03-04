@@ -1,4 +1,4 @@
-class fastPoisson {
+class Poisson {
   constructor(options)
   {
     this.options = {
