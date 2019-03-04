@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Poisson Disc Sampling in JavaScript</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: Monaco, Menlo, Courier, Courier New, Andale Mono;
+    }
+
+    .overlay {
+      position: absolute;
+      padding: 1rem;
+      background: rgba(50, 50, 50, .9);
+      color: #fff;
+    }
+
+    .title {
+      margin: 0 0 1rem;
+    }
+
+    svg:hover path {
+      stroke: rgba(0, 0, 0, .1);
+    }
+
+    svg:hover circle {
+      stroke: rgba(200, 100, 20, .1);
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1 class="title">Poisson Disc Sampling in JavaScript</h1>
+  </div>
+  <script src="Poisson.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>
