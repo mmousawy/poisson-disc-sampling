@@ -50,8 +50,8 @@ class Poisson {
     } else {
       const angle = this.random() * this.PI2;
 
-      coordinate[0] = this.activeSamples[0][0] + Math.cos(angle) * (this.options.radius);
-      coordinate[1] = this.activeSamples[0][1] + Math.sin(angle) * (this.options.radius);
+      coordinate[0] = this.activeSamples[0][0] + Math.cos(angle) * (this.options.radius + this.options.radius * this.random());
+      coordinate[1] = this.activeSamples[0][1] + Math.sin(angle) * (this.options.radius + this.options.radius * this.random());
     }
 
     const gridX = Math.floor(coordinate[0] / this.cellSize);
