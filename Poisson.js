@@ -45,8 +45,8 @@ class Poisson {
     let coordinate = Array(2).fill(0);
 
     if (!this.activeSamples[0]) {
-      coordinate[0] = .99 * this.options.dimensions.width;
-      coordinate[1] = .99 * this.options.dimensions.height;
+      coordinate[0] = this.random() * this.options.dimensions.width;
+      coordinate[1] = this.random() * this.options.dimensions.height;
     } else {
       const angle = this.random() * this.PI2;
 
