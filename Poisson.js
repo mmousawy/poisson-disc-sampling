@@ -43,16 +43,15 @@ class Poisson {
     iteration += 1;
 
     let coordinate = Array(2).fill(0);
-    let originCircle;
 
     if (!this.activeSamples[0]) {
-      coordinate[0] = .5 * this.options.dimensions.width;
-      coordinate[1] = .5 * this.options.dimensions.height;
+      coordinate[0] = .99 * this.options.dimensions.width;
+      coordinate[1] = .99 * this.options.dimensions.height;
     } else {
       const angle = this.random() * this.PI2;
 
-      coordinate[0] = this.activeSamples[0][0] + Math.cos(angle) * (this.options.radius + this.options.radius * this.random());
-      coordinate[1] = this.activeSamples[0][1] + Math.sin(angle) * (this.options.radius + this.options.radius * this.random());
+      coordinate[0] = this.activeSamples[0][0] + Math.cos(angle) * (this.options.radius);
+      coordinate[1] = this.activeSamples[0][1] + Math.sin(angle) * (this.options.radius);
     }
 
     const gridX = Math.floor(coordinate[0] / this.cellSize);
@@ -60,7 +59,7 @@ class Poisson {
 
     const gridPoint = gridX + gridY * this.columns;
 
-    if (gridPoint >= 0 && gridPoint < this.gridSize && !this.grid[gridPoint]) {
+    if (gridX >= 0 && gridX < this.columns && gridY >= 0 && gridY < this.rows && !this.grid[gridPoint]) {
       if (!this.isValid(coordinate, gridX, gridY)) {
         return this.sample(iteration);
       }
